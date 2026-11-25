@@ -1,0 +1,28 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: notification-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/decp_notification_db
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notification-service-group
+      auto-offset-reset: earliest
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.value.default.type: com.decp.notification_service.event.JobCreatedEvent
+        spring.json.use.type.headers: false
+server:
+  port: 8085

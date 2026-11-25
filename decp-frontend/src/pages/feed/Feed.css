@@ -1,0 +1,345 @@
+.feed-page {
+  display: grid;
+  width: min(100%, var(--container-lg));
+  gap: var(--space-5);
+}
+
+.feed-hero,
+.feed-page__header,
+.feed-post-card__header,
+.feed-post-card__actions,
+.feed-pagination,
+.feed-form__actions,
+.feed-comments__header,
+.feed-comment__meta,
+.feed-composer__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.feed-hero,
+.feed-summary button,
+.feed-composer,
+.feed-post-card,
+.feed-comments,
+.feed-comment,
+.feed-state,
+.feed-empty {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.feed-hero {
+  align-items: center;
+  padding: var(--space-8);
+  background:
+    linear-gradient(135deg, rgb(30 58 138 / 10%), rgb(15 118 110 / 9%)),
+    var(--color-surface);
+}
+
+.feed-eyebrow {
+  margin: 0 0 var(--space-2);
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.feed-hero h1,
+.feed-page__header h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 1.45rem + 1vw, 2.45rem);
+  letter-spacing: 0;
+}
+
+.feed-page__header h1 {
+  font-size: 1.75rem;
+}
+
+.feed-hero p:last-child,
+.feed-page__header p,
+.feed-post-card__author,
+.feed-post-card__date,
+.feed-post-card__source span,
+.feed-comment__meta span {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+}
+
+.feed-hero p:last-child {
+  max-width: 64ch;
+}
+
+.feed-summary {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.feed-summary button {
+  display: grid;
+  min-height: 0;
+  justify-items: start;
+  gap: var(--space-2);
+  color: var(--color-text);
+  padding: var(--space-4);
+  text-align: left;
+}
+
+.feed-summary button:hover,
+.feed-summary button.is-active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
+}
+
+.feed-summary svg {
+  color: var(--color-primary);
+}
+
+.feed-summary span {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.feed-summary strong {
+  color: var(--color-text);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.feed-composer,
+.feed-post-card,
+.feed-comments {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+
+.feed-composer__header {
+  align-items: center;
+}
+
+.feed-composer__header svg {
+  color: var(--color-primary);
+}
+
+.feed-composer h2,
+.feed-comments__header h2 {
+  margin: var(--space-1) 0 0;
+  font-size: 1.1rem;
+}
+
+.feed-form,
+.feed-comment-form {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.feed-form label,
+.feed-comment-form label {
+  display: grid;
+  gap: var(--space-2);
+  color: var(--color-text);
+  font-weight: 800;
+}
+
+.feed-form textarea,
+.feed-comment-form textarea {
+  width: 100%;
+  min-height: 104px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  background: var(--color-surface);
+  padding: 10px var(--space-3);
+  font: inherit;
+  resize: vertical;
+}
+
+.feed-form textarea::placeholder,
+.feed-comment-form textarea::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.feed-form__actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+.feed-list,
+.feed-comments-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.feed-post-card__header {
+  align-items: center;
+}
+
+.feed-post-card__source {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.feed-post-card__source span {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.feed-post-card__content {
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.feed-post-card__job-link {
+  justify-self: start;
+}
+
+.feed-post-card__actions {
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.feed-source-badge {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+  color: var(--color-text-muted);
+  background: var(--color-surface-muted);
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.feed-source-badge--manual {
+  color: var(--color-success);
+  background: var(--color-success-soft);
+}
+
+.feed-source-badge--job {
+  color: var(--color-info);
+  background: var(--color-info-soft);
+}
+
+.feed-button--liked {
+  border-color: var(--color-liked-border);
+  color: var(--color-liked);
+  background: var(--color-liked-soft);
+}
+
+.feed-button--danger {
+  border: 1px solid var(--color-error-soft);
+  color: var(--color-error);
+  background: var(--color-error-soft);
+}
+
+.feed-button--danger:hover {
+  border-color: var(--color-error);
+  color: var(--color-error);
+  background: var(--color-error-soft);
+}
+
+.feed-state,
+.feed-empty {
+  padding: var(--space-5);
+  color: var(--color-text-muted);
+}
+
+.feed-empty {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+}
+
+.feed-empty h2 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 1.15rem;
+}
+
+.feed-empty p {
+  margin: 0;
+}
+
+.feed-pagination {
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+}
+
+.feed-pagination span,
+.feed-comments__header span {
+  color: var(--color-text-muted);
+  font-weight: 800;
+}
+
+.feed-comments__header {
+  align-items: center;
+}
+
+.feed-comment {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.feed-comment__meta {
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.feed-comment__meta strong {
+  overflow-wrap: anywhere;
+}
+
+.feed-comment p {
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 760px) {
+  .feed-hero,
+  .feed-page__header,
+  .feed-post-card__header,
+  .feed-pagination,
+  .feed-form__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .feed-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .feed-post-card__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .feed-button {
+    width: 100%;
+  }
+}

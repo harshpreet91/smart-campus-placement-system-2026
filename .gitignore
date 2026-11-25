@@ -1,0 +1,27 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build files
+target/
+dist/
+build/
+
+# IDE files
+.idea/
+
+# Logs
+*.log
+
+# Maven temporary files
+*.lastUpdated
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+oracleJdk-27/

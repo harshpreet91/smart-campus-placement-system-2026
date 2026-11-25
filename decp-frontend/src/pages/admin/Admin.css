@@ -1,0 +1,76 @@
+.admin-page {
+  display: grid;
+  max-width: 660px;
+  gap: 18px;
+}
+
+.admin-page__header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.admin-page__header p {
+  margin: 6px 0 0;
+  color: var(--color-text-muted);
+}
+
+.admin-note {
+  border: 1px solid var(--color-info-soft);
+  border-radius: var(--radius-lg);
+  color: var(--color-info);
+  background: var(--color-info-soft);
+  padding: 12px 14px;
+  line-height: 1.5;
+}
+
+.admin-role-form {
+  display: grid;
+  gap: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  padding: 24px;
+}
+
+.admin-role-form label {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.admin-role-form input,
+.admin-role-form select {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  background: var(--color-surface);
+  font: inherit;
+  padding: 0 12px;
+}
+
+.admin-role-form select {
+  cursor: pointer;
+}
+
+.admin-role-form .form-success {
+  display: grid;
+  gap: 4px;
+}
+
+.admin-role-form .form-success span {
+  font-size: 14px;
+}
+
+.admin-role-form__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 560px) {
+  .admin-role-form__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
