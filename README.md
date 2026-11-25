@@ -1,44 +1,84 @@
-# 🎓 Smart Campus Placement Management System
+# Smart Campus Placement Management System 🎓
 
-A full-stack campus recruitment platform designed to simplify and organize placement activities by connecting students, recruiters, and placement officers through a centralized application.
+A full-stack campus placement management platform built to streamline recruitment activities and connect students, recruiters, and placement officers through a centralized application.
 
-## 📌 Project Overview
+## 📌 About the Project
 
-The Smart Campus Placement Management System aims to modernize the college placement process by providing a centralized platform for managing student profiles, recruitment opportunities, job applications, and placement activities.
+The Smart Campus Placement Management System is designed to simplify and organize the college recruitment process.
 
-The application follows a microservices-oriented backend structure with a separate frontend application.
+The application uses a microservices-oriented backend architecture with a React frontend. It provides separate backend services for authentication, user management, jobs, feeds, notifications, and API routing.
 
-## 🚀 Key Modules
+The project aims to provide a scalable foundation for managing campus placement activities.
 
-The repository contains the following backend services:
+## ✨ Backend Services
 
-- **API Gateway:** Entry point for routing application requests.
-- **Authentication Service:** Handles user authentication.
-- **User Service:** Manages user-related information.
-- **Job Service:** Handles job-related operations.
-- **Feed Service:** Manages feed-related functionality.
-- **Notification Service:** Supports notification functionality.
-
-### Frontend
-- React-based frontend application.
-- Component-based UI structure.
-- Vite development and build tooling.
-- API integration utilities.
+| Service | Responsibility | Port |
+|---|---|---:|
+| API Gateway | Central request routing | 8080 |
+| Auth Service | Authentication | 8081 |
+| User Service | User management | 8082 |
+| Feed Service | Feed operations | 8083 |
+| Job Service | Job operations | 8084 |
+| Notification Service | Notifications | 8085 |
 
 ## 🛠️ Technology Stack
 
-| Category | Technology |
-|---|---|
-| Backend | Java, Spring Boot |
-| Frontend | React.js |
-| Build Tool | Maven |
-| Frontend Tool | Vite |
-| Database | Verify configured database |
-| Architecture | Microservices |
-| Containerization | Docker, Docker Compose |
-| Version Control | Git, GitHub |
+### Frontend
+- React 19
+- Vite 8
+- React Router 7
+- Axios
+- TanStack Query
+- Zustand
+- React Hook Form
+- Zod
+- JWT Decode
+- Lucide React
 
-## 🏗️ Project Structure
+### Backend
+- Java 17
+- Spring Boot 4.0.5
+- Spring Data JPA
+- Spring WebMVC
+- Spring Validation
+- JWT (JJWT)
+- Lombok
+- Maven
+
+### Database and Infrastructure
+- PostgreSQL 16
+- Apache Kafka 7.5
+- Apache Zookeeper
+- Docker
+- Docker Compose
+
+## 🏗️ Project Architecture
+
+```text
+                    React Frontend
+                      Port 5173
+                          |
+                          v
+                      API Gateway
+                      Port 8080
+                          |
+       +------------------+------------------+
+       |         |        |        |         |
+       v         v        v        v         v
+      Auth      User     Feed     Job    Notification
+     Service   Service  Service Service   Service
+       |         |        |        |         |
+       v         v        v        v         v
+    PostgreSQL PostgreSQL PostgreSQL PostgreSQL PostgreSQL
+       |                  |        |
+       +------------------+--------+
+                          |
+                    Apache Kafka
+                          |
+                      Zookeeper
+```
+
+## 📁 Project Structure
 
 ```text
 smart-campus-placement-system/
@@ -46,10 +86,10 @@ smart-campus-placement-system/
 ├── decp-backend/
 │   ├── api-gateway/
 │   ├── auth-service/
+│   ├── user-service/
 │   ├── feed-service/
 │   ├── job-service/
-│   ├── notification-service/
-│   └── user-service/
+│   └── notification-service/
 │
 ├── decp-frontend/
 │   ├── public/
@@ -62,67 +102,90 @@ smart-campus-placement-system/
 └── README.md
 ```
 
-## 💡 Project Goals
+## ⚙️ Prerequisites
 
-- Simplify campus recruitment activities.
-- Organize student and recruiter information.
-- Provide a centralized recruitment platform.
-- Improve placement-related information management.
-- Demonstrate practical implementation of microservices and full-stack development.
+Install the following tools:
 
-## ⚙️ Development Environment
-
-The project can be developed using:
-
-- Java Development Kit (JDK)
+- Java Development Kit (JDK) 17
 - Node.js and npm
-- Maven
-- MySQL or the database configured by the project
-- Visual Studio Code or IntelliJ IDEA
 - Docker Desktop
 - Git
+- Maven (or use the Maven wrapper if provided)
 
-## ▶️ Getting Started
+## 🚀 Getting Started
 
-1. Clone the repository:
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/harshpreet91/smart-campus-placement-system-2026.git
-```
-
-2. Navigate to the project directory:
-
-```bash
 cd smart-campus-placement-system-2026
 ```
 
-3. Configure the required environment variables locally.
+### 2. Configure environment variables
 
-4. Install frontend dependencies:
+The application expects environment files for its services.
+
+Create and configure the required local environment files:
+
+- decp-backend/api-gateway/.env
+- decp-backend/auth-service/.env
+- decp-backend/user-service/.env
+- decp-backend/feed-service/.env
+- decp-backend/job-service/.env
+- decp-backend/notification-service/.env
+- decp-frontend/.env
+
+Use the required variable names from the respective service configurations. Never commit real credentials or secret keys.
+
+### 3. Start infrastructure and backend services
+
+From the root directory:
+
+```bash
+docker compose up --build
+```
+
+This Compose configuration starts PostgreSQL databases, Kafka, Zookeeper, backend services and the frontend.
+
+### 4. Frontend development
+
+For local frontend development:
 
 ```bash
 cd decp-frontend
 npm install
+npm run dev
 ```
 
-5. Review the backend Maven configurations and Docker Compose configuration before starting the services.
+### 5. Build frontend
 
-Refer to the individual service configurations for the exact startup commands and database requirements.
+```bash
+npm run build
+```
 
 ## 🔐 Security
 
-- Environment-specific configuration should be maintained locally.
-- Never commit passwords, API keys, tokens, or private credentials.
-- Use the provided `.gitignore` rules to protect sensitive files.
+- JWT-based authentication dependencies are included.
+- Environment-specific configuration is maintained outside source control.
+- Credentials and API secrets should never be committed to GitHub.
 
 ## 🔮 Future Enhancements
 
 - AI-based resume analysis.
 - Intelligent job recommendations.
-- Automated eligibility verification.
+- Automated student eligibility verification.
 - Interview scheduling.
 - Advanced placement analytics.
-- Email and real-time notifications.
+- Real-time notifications.
+
+## 🎯 Project Objectives
+
+- Centralize campus placement activities.
+- Organize student and recruiter information.
+- Simplify job application management.
+- Demonstrate microservices architecture.
+- Apply full-stack development concepts.
+- Explore event-driven communication using Kafka.
 
 ## 👨‍💻 Developer
 
@@ -134,4 +197,4 @@ Refer to the individual service configurations for the exact startup commands an
 
 ---
 
-*Academic and portfolio project focused on full-stack development and microservices architecture.*
+*Academic and portfolio project focused on full-stack development, backend engineering and microservices architecture.*
